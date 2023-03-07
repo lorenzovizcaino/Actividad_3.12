@@ -3,9 +3,11 @@ package modelos;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.*;
 
 @Entity
 @Table (name="Empresas")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Empresas implements Serializable {
     private String cif;
     private String nombre;
