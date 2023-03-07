@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table (name="Empresas")
 public class Empresas implements Serializable {
     private String cif;
     private String nombre;
