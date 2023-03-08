@@ -6,14 +6,17 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table (name="Empresas")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "Empresas")
 public class Empresas implements Serializable {
-    private String cif;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1799531894432940281L;
+	private String cif;
     private String nombre;
     private String dirección;
     private String teléfono;
-    private Set empleados = new HashSet(0);
+    private Set<Empleados> empleados = new HashSet<Empleados>(0);
 
     public Empresas() {
     }
@@ -25,6 +28,8 @@ public class Empresas implements Serializable {
         this.teléfono = teléfono;
     }
 
+    @Id
+    @Column(name = "cif", unique = true, nullable = false)
     public String getCif() {
         return cif;
     }
@@ -33,6 +38,7 @@ public class Empresas implements Serializable {
         this.cif = cif;
     }
 
+    @Column(name = "nombre", length = 100)
     public String getNombre() {
         return nombre;
     }
@@ -41,6 +47,7 @@ public class Empresas implements Serializable {
         this.nombre = nombre;
     }
 
+    @Column(name = "direccion", length = 100)
     public String getDirección() {
         return dirección;
     }
@@ -49,6 +56,7 @@ public class Empresas implements Serializable {
         this.dirección = dirección;
     }
 
+    @Column(name = "telefono", length = 15)
     public String getTeléfono() {
         return teléfono;
     }
@@ -57,11 +65,13 @@ public class Empresas implements Serializable {
         this.teléfono = teléfono;
     }
 
-    public Set getEmpleados() {
-        return empleados;
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "empresa")
+    public Set <Empleados> getEmpleados() {
+        return this.empleados;
     }
 
-    public void setEmpleados(Set empleados) {
+    public void setEmpleados(Set <Empleados> empleados) {
         this.empleados = empleados;
     }
 }

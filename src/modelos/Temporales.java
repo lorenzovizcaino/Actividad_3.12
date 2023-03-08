@@ -1,12 +1,19 @@
 package modelos;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+@Entity
+@PrimaryKeyJoinColumn(name="empleadoId")
 public class Temporales extends Empleados implements Serializable {
 
-    private LocalDate fechaInicio;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6360419373610479131L;
+	private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private float pagoDia;
     private float suplemento;
@@ -22,6 +29,8 @@ public class Temporales extends Empleados implements Serializable {
         this.suplemento = suplemento;
     }
 
+   // @Temporal(TemporalType.DATE)
+    @Column(name="fechaInicio", length = 10)
     public LocalDate getFechaInicio() {
         return fechaInicio;
     }
@@ -30,6 +39,8 @@ public class Temporales extends Empleados implements Serializable {
         this.fechaInicio = fechaInicio;
     }
 
+ //   @Temporal(TemporalType.DATE)
+    @Column(name="fechaFin", length = 10)
     public LocalDate getFechaFin() {
         return fechaFin;
     }
@@ -38,6 +49,8 @@ public class Temporales extends Empleados implements Serializable {
         this.fechaFin = fechaFin;
     }
 
+
+    @Column(name = "pagoDia", length = 10)
     public float getPagoDia() {
         return pagoDia;
     }
@@ -46,6 +59,7 @@ public class Temporales extends Empleados implements Serializable {
         this.pagoDia = pagoDia;
     }
 
+    @Column(name = "suplemento", length = 10)
     public float getSuplemento() {
         return suplemento;
     }
