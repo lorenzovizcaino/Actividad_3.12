@@ -1,4 +1,4 @@
-package modelos;
+package modelo;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -72,6 +72,16 @@ public class Temporales extends Empleados implements Serializable {
     public void calculoNomina() {
         float sueldo;
         long diferenciaDias=ChronoUnit.DAYS.between(fechaFin,fechaInicio);
-        sueldo=(pagoDia*diferenciaDias)-(pagoDia*diferenciaDias)*super.porcentaRetención+suplemento;
+        sueldo=(pagoDia*diferenciaDias)-(pagoDia*diferenciaDias)*super.porcentaRetencion +suplemento;
+    }
+
+    @Override
+    public String toString() {
+        return "Temporales{" +super.toString()+
+                "fechaInicio=" + fechaInicio +
+                ", fechaFin=" + fechaFin +
+                ", pagoDia=" + pagoDia +
+                ", suplemento=" + suplemento +
+                "} ";
     }
 }

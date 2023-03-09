@@ -1,4 +1,4 @@
-package modelos;
+package modelo;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,10 +16,10 @@ public abstract class Empleados implements Serializable {
 
     private String nombre;
 
-    private String teléfono;
+    private String telefono;
     private Empresas empresa;
 
-    protected float porcentaRetención;
+    protected float porcentaRetencion;
 
    @Id
    @Column(name = "dni", unique = true,nullable = false)
@@ -41,12 +41,12 @@ public abstract class Empleados implements Serializable {
     }
 
     @Column(name="telefono", length = 15)
-    public String getTeléfono() {
-        return teléfono;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTeléfono(String teléfono) {
-        this.teléfono = teléfono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -60,13 +60,24 @@ public abstract class Empleados implements Serializable {
     }
 
     @Column(name="porcentajeRetenciones", length = 10)
-    public float getPorcentaRetención() {
-        return porcentaRetención;
+    public float getPorcentaRetencion() {
+        return porcentaRetencion;
     }
 
-    public void setPorcentaRetención(float porcentaRetención) {
-        this.porcentaRetención = porcentaRetención;
+    public void setPorcentaRetencion(float porcentaRetencion) {
+        this.porcentaRetencion = porcentaRetencion;
     }
 
     public abstract void calculoNomina();
+
+    @Override
+    public String toString() {
+        return "Empleados{" +
+                "dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", empresa=" + empresa.getNombre() +
+                ", porcentaRetencion=" + porcentaRetencion +
+                '}';
+    }
 }

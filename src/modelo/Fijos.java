@@ -1,4 +1,4 @@
-package modelos;
+package modelo;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -44,7 +44,15 @@ public class Fijos extends Empleados implements Serializable {
     @Override
     public void calculoNomina() {
         float sueldo;
-        sueldo=(salarioBase+trienios)-(salarioBase+trienios)*super.porcentaRetención;
+        sueldo=(salarioBase+trienios)-(salarioBase+trienios)*super.porcentaRetencion;
 
+    }
+
+    @Override
+    public String toString() {
+        return "Fijos{" +super.toString()+
+                "salarioBase=" + salarioBase +
+                ", trienios=" + trienios +
+                "} " ;
     }
 }

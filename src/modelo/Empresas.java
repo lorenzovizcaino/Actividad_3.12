@@ -1,4 +1,4 @@
-package modelos;
+package modelo;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -14,18 +14,18 @@ public class Empresas implements Serializable {
 	private static final long serialVersionUID = -1799531894432940281L;
 	private String cif;
     private String nombre;
-    private String dirección;
-    private String teléfono;
+    private String direccion;
+    private String telefono;
     private Set<Empleados> empleados = new HashSet<Empleados>(0);
 
     public Empresas() {
     }
 
-    public Empresas(String cif, String nombre, String dirección, String teléfono) {
+    public Empresas(String cif, String nombre, String direccion, String telefono) {
         this.cif = cif;
         this.nombre = nombre;
-        this.dirección = dirección;
-        this.teléfono = teléfono;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
 
     @Id
@@ -48,21 +48,21 @@ public class Empresas implements Serializable {
     }
 
     @Column(name = "direccion", length = 100)
-    public String getDirección() {
-        return dirección;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDirección(String dirección) {
-        this.dirección = dirección;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     @Column(name = "telefono", length = 15)
-    public String getTeléfono() {
-        return teléfono;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTeléfono(String teléfono) {
-        this.teléfono = teléfono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
 
@@ -73,5 +73,15 @@ public class Empresas implements Serializable {
 
     public void setEmpleados(Set <Empleados> empleados) {
         this.empleados = empleados;
+    }
+
+    @Override
+    public String toString() {
+        return "Empresas{" +
+                "cif='" + cif + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                '}';
     }
 }
