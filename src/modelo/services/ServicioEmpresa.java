@@ -37,3 +37,5 @@ public class ServicioEmpresa implements IServicioEmpresa{
         }
     }
 }
+//borrado de una empresa con  todos sus empleados
+//por cada empresa que se traiga todos su empleados.
