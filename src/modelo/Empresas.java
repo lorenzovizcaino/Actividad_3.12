@@ -75,6 +75,8 @@ public class Empresas implements Serializable {
         this.empleados = empleados;
     }
 
+
+
     @Override
     public String toString() {
         return "Empresas{" +
@@ -82,6 +84,7 @@ public class Empresas implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
+                ", empleados=" + empleados.toString() +
                 '}';
     }
 }
