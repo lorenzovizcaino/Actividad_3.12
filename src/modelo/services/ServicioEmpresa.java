@@ -1,5 +1,6 @@
 package modelo.services;
 
+import modelo.Empleados;
 import modelo.Empresas;
 import org.hibernate.Session;
 
@@ -14,6 +15,13 @@ public class ServicioEmpresa implements IServicioEmpresa{
         empresa.setDireccion("Fernando Conde 15");
         empresa.setTelefono("986295330");
         session.save(empresa);
+
+        Empresas empresa2=new Empresas();
+        empresa2.setCif("D36345453");
+        empresa2.setNombre("Mapaliona S.L");
+        empresa2.setDireccion("Manuel Solis 135");
+        empresa2.setTelefono("934565330");
+        session.save(empresa2);
     }
 
     @Override
@@ -21,6 +29,11 @@ public class ServicioEmpresa implements IServicioEmpresa{
         List<Empresas> lista=session.createQuery("Select e from Empresas e order by e.cif").list();
         for (Empresas e:lista) {
             System.out.println(e);
+            List<Empleados> listaEmp=session.createQuery("Select em from Empleados em where em.empresa.cif=:id").setParameter("id",e.getCif()).list();
+            System.out.println("Empleados de:"+e.getNombre());
+            for (Empleados emp:listaEmp) {
+                System.out.println("\t"+emp);
+            }
         }
     }
 }

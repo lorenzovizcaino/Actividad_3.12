@@ -84,7 +84,6 @@ public class Empresas implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
-                ", empleados=" + empleados.toString() +
                 '}';
     }
 }
