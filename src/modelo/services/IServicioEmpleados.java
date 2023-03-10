@@ -6,4 +6,5 @@ public interface IServicioEmpleados {
     void addEmpleados(Session session, String cifEmpresa);
 
     void deleteEmpleados(Session session, String s);
+
 }

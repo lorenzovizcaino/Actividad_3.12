@@ -7,12 +7,15 @@ import modelo.Temporales;
 import org.hibernate.Session;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ServicioEmpleados implements IServicioEmpleados{
     @Override
     public void addEmpleados(Session session, String cifEmpresa) {
         Empresas empresa=session.get(Empresas.class,cifEmpresa);
         if(empresa!=null){
+
             Fijos emp1=new Fijos();
             emp1.setDni("76912388C");
             emp1.setNombre("Antonio Lorenzo");
@@ -20,6 +23,11 @@ public class ServicioEmpleados implements IServicioEmpleados{
             emp1.setPorcentaRetencion(3);
             emp1.setSalarioBase(1500);
             emp1.setTrienios(2);
+
+            Set<Empleados> empleadosSet=new HashSet<>();
+            empleadosSet.add(emp1);
+            empresa.setEmpleados(empleadosSet);
+
             session.save(emp1);
 
 
@@ -32,6 +40,10 @@ public class ServicioEmpleados implements IServicioEmpleados{
             LocalDate fechaFin = LocalDate.of(2021, 10, 30);
             emp2.setFechaInicio(fechaInicio);
             emp2.setFechaFin(fechaFin);
+
+            empleadosSet.add(emp2);
+            empresa.setEmpleados(empleadosSet);
+
             session.save(emp2);
         }else{
             System.out.println("Esa empresa no existe en la BD, no se pueden insertar empleados");
@@ -50,4 +62,6 @@ public class ServicioEmpleados implements IServicioEmpleados{
             System.out.println("No se puede borrar el empleado con DNI: "+dni+", No existe en la BD");
         }
     }
+
+
 }

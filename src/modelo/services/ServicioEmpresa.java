@@ -36,4 +36,20 @@ public class ServicioEmpresa implements IServicioEmpresa{
             }
         }
     }
+
+    @Override
+    public void listarEmpresasConEmpleados2(Session session) {
+        List<Empresas> lista=session.createQuery("Select e from Empresas e order by e.cif").list();
+        for (Empresas e:lista) {
+            System.out.println(e);
+            System.out.println("Empleados de:"+e.getNombre());
+            System.out.println(e.getEmpleados().size());
+            for (Empleados emp:e.getEmpleados()) {
+                System.out.println("\t"+emp);
+            }
+
+        }
+    }
 }
+//borrado de una empresa con  todos sus empleados
+//por cada empresa que se traiga todos su empleados.

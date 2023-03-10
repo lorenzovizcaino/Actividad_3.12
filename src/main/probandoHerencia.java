@@ -35,7 +35,7 @@ public class probandoHerencia {
         servicioEmpresa.addEmpresa(session);
         servicioEmpleados.addEmpleados(session,"B36887453");
        // servicioEmpleados.deleteEmpleados(session, "45912386D");
-        servicioEmpresa.listarEmpresasConEmpleados(session);
+        servicioEmpresa.listarEmpresasConEmpleados2(session);
         tx.commit();
 
         session.close();
