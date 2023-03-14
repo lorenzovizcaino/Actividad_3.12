@@ -49,6 +49,7 @@ public abstract class Empleados implements Serializable {
         this.telefono = telefono;
     }
 
+    //lado propietario el lado n, es el que tiene la foreign key
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cif", nullable = false)
     public Empresas getEmpresa() {
