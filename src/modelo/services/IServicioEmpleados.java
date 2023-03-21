@@ -1,10 +1,11 @@
 package modelo.services;
 
+import modelo.Empleados;
 import org.hibernate.Session;
 
 public interface IServicioEmpleados {
-    void addEmpleados(Session session, String cifEmpresa);
+    public Empleados addEmpleados(Empleados empleado);
 
-    void deleteEmpleados(Session session, String s);
+    public boolean deleteEmpleados(String dni);
 
 }

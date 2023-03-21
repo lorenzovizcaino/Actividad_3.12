@@ -66,7 +66,7 @@ public class Empresas implements Serializable {
     }
 
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "empresa")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "empresa", cascade=CascadeType.ALL)
     public Set <Empleados> getEmpleados() {
         return this.empleados;
     }
